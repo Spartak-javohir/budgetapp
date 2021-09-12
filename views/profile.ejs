@@ -1,0 +1,118 @@
+<%- include("parts/header") %>
+
+<section class="bg-info p-4">
+
+  <div class="container">
+    <h1 class="text-center mt-4 text-white ">Online hisobchi</h1>
+
+    <div class="row budget_numbers d-flex justify-content-around  mt-4">
+      <div class="col-3 number bg-primary rounded " id="earned">
+        <h2 class="text-center mt-4 text-white ">Daromad</h2>
+        <div class="amount_Income d-flex flex.-column justify-content-center ">
+          <span id="amount_earned "><%=x%></span>
+          <p id="currency "> so'm</p>
+        </div>
+      </div>
+      <div class="col-3 number bg-primary rounded ">
+        <h2 class="text-center mt-4 text-white">Balance</h2>
+        <div class="amount_balance d-flex flex.-column justify-content-center  ">
+          <span id="amount_earned "><%=x-y %></span>
+         
+          <p id="currency "> so'm</p>
+        </div>
+      </div>
+      <div class="col-3  number bg-primary rounded ">
+        <h2 class="text-center mt-4 text-white">Xarajatlar</h2>
+        <div class="amount_expense d-flex flex.-column justify-content-center ">
+          <span id="amount_Expense "><%=y %></span>
+          <p id="currency "> so'm</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-around align-items-center">
+      <div class="card p-3 bg-secondary">
+        <form method="POST" action="/krim" class="form d-flex flex-column w-100 justify-content-center align-items-center mb-4">
+
+          <input type="text" class="form-control" name="input_description" id="input_description"
+            placeholder="Description ">
+          <input type="number" name="input_amount" min="0" class="form-control my-2" id="input_amount" placeholder="krim">
+         
+          <button type="submit" class="btn btn-success me-md-2 ">Add Income</button>
+        </form>
+      </div>
+      <div class="card p-3 bg-secondary">
+        <form action="/chiqm" method="POST" class="form d-flex flex-column w-100 justify-content-center align-items-center mb-4">
+
+          <input type="text" name="chtext" class="form-control" id="input_description2" placeholder="Description ">
+          <input type="number" name="chnumber" min="0" class="form-control my-2" id="input_amount2" placeholder="chiqm">
+  
+          <button type="submit" class="btn btn-danger me-md-2">Add Expense</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="row d-flex .flex-row mt-4">
+      <div class="col-6">
+        <h3 class="text-center text-white ">Daromad</h3>
+        <table class="table table-striped table-dark">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Source</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+
+              <%for(let e of dt){%>
+              <td><%=e._id%></td>
+              <td><%= e.input_description%></td>
+              <td><%= e.input_amount%></td>
+              <td><%=e.time%></td>
+            </tr>
+            <%}%>
+              
+            </tbody>
+          </table>
+     </div>
+
+
+
+     <div class="col-6">
+        <h3 class="text-center text-white">Xarajatlar</h3>
+        <table class="table table-striped table-dark">
+            <thead>
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Source</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Time</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <%for(let i of chdt){%>
+            <td><%=i._id%></td>
+            <td><%= i.chtext%></td>
+            <td><%= i.chnumber%></td>
+            <td><%=i.time%></td>
+            </tr>
+            <%}%>
+              </tr>
+             
+            </tbody>
+          </table>
+     </div>
+
+
+
+    </div>
+
+
+</div>
+</section>
